@@ -7,6 +7,11 @@ on:
   schedule:
     - cron: '23 */6 * * *'   # four times a day
   workflow_dispatch:          # and whenever you press the button
+    inputs:
+      refresh:
+        description: 'Re-match every film, ignoring the cache'
+        type: boolean
+        default: false
   push:
     paths:
       - 'scripts/enrich.py'
@@ -32,7 +37,9 @@ jobs:
       - name: Rebuild the log
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: python3 scripts/enrich.py --out data/movies.json
+        run: |
+          python3 scripts/enrich.py --out data/movies.json \
+            ${{ inputs.refresh && '--refresh' || '' }}
 
       - name: Commit if changed
         run: |

@@ -25,6 +25,8 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import re
+import unicodedata
 from datetime import datetime, timezone
 
 SHEET_ID = "1qc-Eclmjr9GHwwFB2l_4T4PVOvT8ZdkeHA0pI57SdDM"
@@ -34,10 +36,16 @@ TMDB = "https://api.themoviedb.org/3"
 COLUMNS = ["title", "year", "rating", "director", "genre",
            "highlighted", "source_page", "column", "notes"]
 
+# Optional. Put a TMDb id in the sheet to pin a film whose title is ambiguous;
+# the search is skipped entirely for that row.
+PIN_COLUMN = "tmdb_id"
+
 # TMDb allows far more than this; staying well under keeps us a good citizen.
 SLEEP = 0.06
 # The notebook's year is sometimes a year or two off the canonical release.
 YEAR_SLACK = 2
+# How many search results to check a director against before giving up.
+CANDIDATES = 4
 
 
 def get(url: str, tries: int = 3) -> bytes:
@@ -71,6 +79,7 @@ def load_sheet() -> list[dict]:
         if not title:
             continue
         rec = {c: (r.get(c) or "").strip() for c in COLUMNS}
+        rec["pin"] = (r.get(PIN_COLUMN) or "").strip()
         rec["title"] = title
         # Google eats leading zeros on what it reads as a number.
         if rec["source_page"]:
@@ -84,42 +93,46 @@ def key_of(rec: dict) -> str:
     return f"{slug}|{rec.get('year', '')}"
 
 
+def name_tokens(s: str) -> set[str]:
+    """Surname-ish tokens, accent-folded, for comparing two credit strings."""
+    s = unicodedata.normalize("NFD", s or "")
+    s = "".join(c for c in s if not unicodedata.combining(c)).lower()
+    return {t for t in re.split(r"[^a-z]+", s) if len(t) > 2}
+
+
 def api(path: str, key: str, **params) -> dict:
     params["api_key"] = key
     url = f"{TMDB}{path}?{urllib.parse.urlencode(params)}"
     return json.loads(get(url))
 
 
-def search(title: str, year: str, key: str) -> dict | None:
-    """Search by title and year, then by title alone if the year misses."""
+def candidates(title: str, year: str, key: str) -> list[dict]:
+    """Plausible matches, best first: closest release year, then most popular."""
+    hits = []
     if year:
         hits = api("/search/movie", key, query=title, year=year).get("results") or []
-        if hits:
-            return hits[0]
         time.sleep(SLEEP)
-
-    hits = api("/search/movie", key, query=title).get("results") or []
     if not hits:
-        return None
-    if not year:
-        return hits[0]
+        hits = api("/search/movie", key, query=title).get("results") or []
+        time.sleep(SLEEP)
+    if not hits:
+        return []
 
-    # The notebook's year can drift from the canonical release. Take the
-    # closest match inside the slack window rather than whatever ranked first.
     try:
         want = int(year)
     except ValueError:
-        return hits[0]
+        return hits[:CANDIDATES]
 
     def distance(h):
-        date = h.get("release_date") or ""
         try:
-            return abs(int(date[:4]) - want)
+            return abs(int((h.get("release_date") or "")[:4]) - want)
         except ValueError:
             return 999
 
-    best = min(hits, key=distance)
-    return best if distance(best) <= YEAR_SLACK else None
+    near = [h for h in hits if distance(h) <= YEAR_SLACK]
+    pool = near or hits
+    pool.sort(key=lambda h: (distance(h), -(h.get("popularity") or 0)))
+    return pool[:CANDIDATES]
 
 
 def details(tmdb_id: int, key: str) -> dict:
@@ -139,6 +152,34 @@ def details(tmdb_id: int, key: str) -> dict:
 
 ART_FIELDS = ("tmdb_id", "poster", "backdrop", "runtime",
               "overview", "tmdb_director", "tmdb_genres")
+
+
+def resolve(m: dict, key: str) -> dict | None:
+    """
+    Pick the right film. A one-word title like "Seven", "Dreams" or "Passion"
+    matches several, and TMDb's own ranking is not always the one meant — so
+    where the log already names a director, the candidate whose director agrees
+    wins over whatever ranked first.
+    """
+    if m.get("pin"):
+        return details(int(m["pin"]), key)
+
+    pool = candidates(m["title"], m["year"], key)
+    if not pool:
+        return None
+
+    want = name_tokens(m.get("director", ""))
+    first = None
+    for c in pool:
+        got = details(c["id"], key)
+        time.sleep(SLEEP)
+        if first is None:
+            first = got
+        if not want:
+            return got
+        if want & name_tokens(got.get("tmdb_director") or ""):
+            return got
+    return first
 
 
 def main() -> None:
@@ -181,12 +222,10 @@ def main() -> None:
 
         looked_up += 1
         try:
-            hit = search(m["title"], m["year"], key)
-            time.sleep(SLEEP)
-            if hit:
-                m.update(details(hit["id"], key))
+            got = resolve(m, key)
+            if got:
+                m.update(got)
                 found += 1
-                time.sleep(SLEEP)
             else:
                 for f in ART_FIELDS:
                     m[f] = None
