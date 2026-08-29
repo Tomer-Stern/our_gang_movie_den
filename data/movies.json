@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-29T16:23:39+00:00",
+ "generated": "2026-08-29T16:24:09+00:00",
  "count": 893,
  "with_art": 893,
  "movies": [
@@ -6466,13 +6466,16 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
+   "tmdb_id": 186670,
+   "poster": "/9t5j1ZaJgKE07vI35CyUmB6iBIg.jpg",
    "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "runtime": 87,
+   "overview": "Snow Maid spends years practicing kung fu under the guidance of Ugly Maid in the mountains. All she has on her mind in these years is to avenge her mother’s death. Nevertheless, after she bids farewell to her master and leaves the mountains, she unexpectedly falls in love with her enemy’s son. As they both conceal their true identities and misunderstanding keeps accumulating, how will this romance end?",
+   "tmdb_director": "Chou Hsu-Chiang",
+   "tmdb_genres": [
+    "Action",
+    "Adventure"
+   ]
   },
   {
    "title": "Waterloo",
@@ -7853,13 +7856,16 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 17129,
+   "poster": "/2WJSNY14pA1ZlfcJD2auVqQ7Y5h.jpg",
+   "backdrop": "/zkvjPIvyfrMXS09gJyboXjua54e.jpg",
+   "runtime": 84,
+   "overview": "Hanzo extracts a confession from a ghost using his assaulting methods, foils thieves, connects with Heisuke Takei a friend from his youth, offers protection to a forward-thinking physician Genan Sugino who has defamed his ruler, discovers a pleasure ring of young wives and a blind music teacher, and cuckolds a corrupt official under his very nose.",
+   "tmdb_director": "Yoshio Inoue",
+   "tmdb_genres": [
+    "Action",
+    "Drama"
+   ]
   },
   {
    "title": "Phantom of the Paradise",
@@ -8863,13 +8869,17 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 188076,
+   "poster": "/d7ivFMJCpfBPl1BKgarXkmtsUUQ.jpg",
+   "backdrop": "/cNdlNE3NOSbxRI6NJNMHh7OZTfl.jpg",
+   "runtime": 71,
+   "overview": "Trevor is an extremely shy undertaker's assistant. He always tags along with his good friend Ronnie, when he goes to the pub with his girlfriend Sandra. Sandra introduces Trevor to her more forward friend Linda. Linda has a difficult time getting Trevor to go out with her, but she finally gets him to go to a disco; he won't dance, so Linda dances with Ronnie.",
+   "tmdb_director": "Mike Leigh",
+   "tmdb_genres": [
+    "Drama",
+    "Romance",
+    "TV Movie"
+   ]
   },
   {
    "title": "The Late Show",
@@ -9752,13 +9762,15 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 113479,
+   "poster": "/hA69SHZQ3jixYq2wykoTlH2VgjI.jpg",
+   "backdrop": "/p8NHG9uNXn7MSrknNk0LbBjJxQc.jpg",
+   "runtime": 87,
+   "overview": "A look at the sexual and professional lives of three people — a television director, his ex-girlfriend, and a sex worker.",
+   "tmdb_director": "Jean-Luc Godard",
+   "tmdb_genres": [
+    "Drama"
+   ]
   },
   {
    "title": "Grown Ups",
@@ -12051,13 +12063,15 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 39507,
+   "poster": "/hFLUqiwvvtcUqA5NZNejaaNpTv0.jpg",
+   "backdrop": "/dOC74DSvbBnE9117wyJzOdmG9Kz.jpg",
+   "runtime": 83,
+   "overview": "After a convivial holiday dinner party, things begin to unravel when a husband and wife address some prickly issues concerning their marriage.",
+   "tmdb_director": "John Huston",
+   "tmdb_genres": [
+    "Drama"
+   ]
   },
   {
    "title": "The Sicilian",
@@ -12743,13 +12757,16 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 12516,
+   "poster": "/ua17wrOrUjyqxuYmnUrmOVBMf4G.jpg",
+   "backdrop": "/g2Y4A9qgkHhecPBnYMaAIzTlmcN.jpg",
+   "runtime": 119,
+   "overview": "Eight visually rich vignettes drawn from Kurosawa’s own dreams—fox weddings and vanished orchards, a soldier’s ghosts, a walk through Van Gogh’s canvases, nuclear nightmares, and a water-mill utopia—meditate on childhood, art, mortality, and humanity’s uneasy bond with nature.",
+   "tmdb_director": "Akira Kurosawa",
+   "tmdb_genres": [
+    "Fantasy",
+    "Drama"
+   ]
   },
   {
    "title": "Goodfellas",
@@ -13688,13 +13705,18 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 22213,
+   "poster": "/rmCgFzCnqoPRtm1zXTxKzV8yUJV.jpg",
+   "backdrop": "/4Jj5I8qmnNndscSCjHSXo19QUcf.jpg",
+   "runtime": 92,
+   "overview": "Red is an aging scam-artist who's just been released from prison together with Ronnie, a young and not-so-bright hoodlum who is easily manipulated. Their new business is to organize fake-money sales and then kill the buyer to take his money; but when Ronnie kills an undercover secret service agent, his partner Jimmy Mercer vows revenge and is given one week to catch the killers before being transferred.",
+   "tmdb_director": "James B. Harris",
+   "tmdb_genres": [
+    "Drama",
+    "Action",
+    "Crime",
+    "Thriller"
+   ]
   },
   {
    "title": "Carlito's Way",
@@ -14513,13 +14535,16 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 86524,
+   "poster": "/eakonizynrr2Kdws2wUwuzpvFQW.jpg",
+   "backdrop": "/jGlW9pFR6zpPrCRhI8423vamEvV.jpg",
+   "runtime": 95,
+   "overview": "Don \"the Dragon\" Wilson is a man pursued. Branded a cop-killer, he must fight simply to stay alive, and to clear his name... with the very police who framed him.",
+   "tmdb_director": "Jonathan Winfrey",
+   "tmdb_genres": [
+    "Action",
+    "Thriller"
+   ]
   },
   {
    "title": "The Flower of My Secret",
@@ -16494,13 +16519,16 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 68569,
+   "poster": "/vvNDQO2izNk6ytDxFtTr1BP5CxL.jpg",
+   "backdrop": "/hMQfIJVM8s6O044a8OK08uLv9w9.jpg",
+   "runtime": 133,
+   "overview": "A Jewish strongman performs in Berlin as the blond Aryan hero Siegfried.",
+   "tmdb_director": "Werner Herzog",
+   "tmdb_genres": [
+    "Drama",
+    "War"
+   ]
   },
   {
    "title": "No Such Thing",
@@ -18195,13 +18223,15 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 1498473,
+   "poster": "/h7AiNspJOZNTEOOjI0Wb8DPTROE.jpg",
+   "backdrop": "/6hadFBzzncmhbN5Fs6oNhDJydxx.jpg",
+   "runtime": 100,
+   "overview": "In line with the principles of his ecological \"conversion\", Matteo Argento, chief financial officer of a multinational company, leaves, along with his wife Lydia, the city's mayhem and pollution to move to a country house.",
+   "tmdb_director": "Sergio Zanetti",
+   "tmdb_genres": [
+    "Drama"
+   ]
   },
   {
    "title": "The Act of Killing",
@@ -19014,13 +19044,17 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 446574,
+   "poster": "/vSCjeSAkdrAyi3XDIrNWpMsH5oP.jpg",
+   "backdrop": "/kK8ZsfmTfucRtCcEFeI2uhkXqMG.jpg",
+   "runtime": 91,
+   "overview": "Clint is a dead man who lives alone in a frozen tundra. However, this isolation cannot bring either evasion or peace. One night, he begins a journey where he must confront his dreams, memories, and visions, crossing the darkness into the light.",
+   "tmdb_director": "Abel Ferrara",
+   "tmdb_genres": [
+    "Drama",
+    "Fantasy",
+    "Horror"
+   ]
   },
   {
    "title": "Bad Trip",
