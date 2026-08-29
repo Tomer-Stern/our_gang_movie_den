@@ -1,0 +1,47 @@
+name: Refresh the log
+
+# Re-reads the Google Sheet and looks up artwork for any newly added film.
+# The site reads the sheet live, so a new row shows up immediately; this is
+# what gives it a poster, a runtime and a synopsis.
+on:
+  schedule:
+    - cron: '23 */6 * * *'   # four times a day
+  workflow_dispatch:          # and whenever you press the button
+  push:
+    paths:
+      - 'scripts/enrich.py'
+      - '.github/workflows/refresh.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild the log
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: python3 scripts/enrich.py --out data/movies.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/movies.json; then
+            echo "No change."
+          else
+            git add data/movies.json
+            git commit -m "Refresh the film log"
+            git push
+          fi

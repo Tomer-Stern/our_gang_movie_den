@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Gang — a life at the movies</title>
+<meta name="description" content="Nine hundred films watched and rated in a house with a movie den, kept in a notebook and now on a wall.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='14'>&#127916;</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://image.tmdb.org">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1 class="wordmark">Our Gang<em>at the movies</em></h1>
+    <p class="tagline">
+      Every film watched in the den, written down by hand for years and rated out of five.
+      <span class="joke">A Letterboxd killer, obviously.</span>
+    </p>
+
+    <section class="stats" id="stats" aria-label="Summary"></section>
+
+    <div class="statusbar" id="status">
+      <span class="dot"></span><span id="status-text">Reading the log&hellip;</span>
+      <button class="btn" id="refresh" type="button" title="Re-read the sheet">&#8635; Refresh</button>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap controls-inner">
+    <label for="search" class="sr-only">Search</label>
+    <input id="search" class="search" type="search" placeholder="Search a title, director, genre or year&hellip;" autocomplete="off" spellcheck="false">
+
+    <label for="sort" class="sr-only">Sort</label>
+    <select id="sort" class="pick"></select>
+
+    <label class="toggle"><input id="ratedOnly" type="checkbox"> Rated only</label>
+    <label class="toggle"><input id="favesOnly" type="checkbox"> Favourites</label>
+
+    <button class="btn gold" id="lucky" type="button">&#127916; Surprise me</button>
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <div class="chips" id="chips"></div>
+  <div class="wall" id="wall"></div>
+  <div class="more" id="more" hidden><button class="btn" type="button">Show more</button></div>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>By the numbers</h2>
+      <span class="note">click any bar to filter the wall</span>
+    </div>
+
+    <div class="charts">
+      <div class="card scatter-card">
+        <h3>Ratings across the years</h3>
+        <p class="sub">Every rated film by release year. Gold is 4.5 and up; the dashed line is the average.</p>
+        <svg id="scatter" viewBox="0 0 1120 400" role="img" aria-label="Rating by release year"></svg>
+      </div>
+
+      <div class="card" id="decadeChart">
+        <h3>By decade</h3>
+        <p class="sub">Which eras the den keeps returning to.</p>
+        <div class="bars"></div>
+      </div>
+
+      <div class="card" id="directorChart">
+        <h3>Most-watched directors</h3>
+        <p class="sub">Top twelve by number of films.</p>
+        <div class="bars"></div>
+      </div>
+
+      <div class="card" id="genreChart">
+        <h3>Genres</h3>
+        <p class="sub">Counted across every genre a film is tagged with.</p>
+        <div class="bars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>The ledger</h2>
+      <span class="note" id="ledger-note"></span>
+    </div>
+    <div class="table-scroll">
+      <table id="ledger">
+        <thead>
+          <tr>
+            <th data-sort="title">Title</th>
+            <th data-sort="year">Year</th>
+            <th data-sort="rating">Rating</th>
+            <th>Director</th>
+            <th>Genre</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>
+      <strong>Where this comes from.</strong> Every entry was written by hand in a notebook, then
+      photographed and transcribed &mdash; 893 films to start with, the earliest from 1920. The
+      ratings are exactly as written, on the notebook&rsquo;s own nought-to-five scale.
+    </p>
+    <p>
+      <strong>How it stays current.</strong> The log lives in a Google Sheet. Add a film there and it
+      appears here on the next refresh; the poster, runtime and synopsis follow within a few hours,
+      looked up automatically. Anything typed into the sheet by hand always wins over the lookup.
+    </p>
+    <p class="credit">
+      Artwork and film data from <a href="https://www.themoviedb.org/">TMDb</a>. This product uses the
+      TMDb API but is not endorsed or certified by TMDb.
+    </p>
+  </footer>
+</main>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Film detail"><div class="sheet-inner"></div></div>
+<div class="tip" id="tip"></div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
