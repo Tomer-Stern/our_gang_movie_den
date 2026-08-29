@@ -21,6 +21,7 @@ That is the whole workflow. No GitHub account, no editor, nothing to install.
 | `highlighted` | `yes`/`no`, carried over from the notebook's highlighter |
 | `source_page`, `column` | Which notebook photo the line came from. Blank for new entries |
 | `notes` | Anything you want to say about it |
+| `tmdb_id` | Optional. Only needed to correct a wrong poster — see below |
 
 Formatting does not matter. Google turns `06` into `6` and `4.0` into `4` the moment
 it decides a cell is a number; both are put back when the site reads them.
@@ -58,8 +59,30 @@ costs one request per newly added film rather than nine hundred.
 
 Matching is by title and year, falling back to title alone — the notebook's year is
 sometimes a year or two off the canonical release, so the closest release within two
-years wins. Anything unmatched keeps its typed-in details and shows a title plate
-instead of a poster.
+years wins. Where the log already names a director, the candidate whose director agrees
+wins over whatever TMDb ranked first; that is what keeps a one-word title like *Dreams*
+or *Passion* from picking up the wrong film. Anything unmatched keeps its typed-in
+details and shows a title plate instead of a poster.
+
+### Fixing a wrong poster
+
+A handful of titles are ambiguous enough to defeat all of that. TMDb lists Fincher's
+*Seven* as *Se7en*, so searching the log's spelling never reaches it.
+
+To pin one by hand: find the film on [themoviedb.org](https://www.themoviedb.org/), take
+the number out of its URL (`themoviedb.org/movie/807` → `807`) and put that in the
+`tmdb_id` column. The search is skipped entirely for that row.
+
+Known ones worth pinning:
+
+| film | put in `tmdb_id` |
+| --- | --- |
+| Seven (1995) | `807` |
+
+The other rows where the logged director disagrees with TMDb — *Blood Orange*,
+*Vengeance!*, *Hanzo the Razor*, *The Kiss of Death* — look like the **logged** director
+being wrong rather than the match, since the director column was researched after the
+fact rather than copied from the notebook. Worth checking with Dad before changing.
 
 ## Running it
 
