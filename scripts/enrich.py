@@ -44,8 +44,9 @@ PIN_COLUMN = "tmdb_id"
 SLEEP = 0.06
 # The notebook's year is sometimes a year or two off the canonical release.
 YEAR_SLACK = 2
-# How many search results to check a director against before giving up.
-CANDIDATES = 4
+# How many search results to check a director against before giving up. Only
+# films whose first candidates disagree with the logged director pay this cost.
+CANDIDATES = 12
 
 
 def get(url: str, tries: int = 3) -> bytes:
@@ -169,6 +170,12 @@ def resolve(m: dict, key: str) -> dict | None:
         return None
 
     want = name_tokens(m.get("director", ""))
+    if want:
+        # A title search alone can miss the film entirely — TMDb lists Fincher's
+        # "Seven" as "Se7en" — so fold in the year-free results too.
+        seen = {c["id"] for c in pool}
+        pool += [c for c in candidates(m["title"], "", key) if c["id"] not in seen]
+
     first = None
     for c in pool:
         got = details(c["id"], key)
@@ -256,5 +263,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-# Re-matched after the director tie-break landed.
