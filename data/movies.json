@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-29T16:24:09+00:00",
+ "generated": "2026-08-29T16:27:16+00:00",
  "count": 893,
  "with_art": 893,
  "movies": [
@@ -6466,13 +6466,16 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
+   "tmdb_id": 186670,
+   "poster": "/9t5j1ZaJgKE07vI35CyUmB6iBIg.jpg",
    "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "runtime": 87,
+   "overview": "Snow Maid spends years practicing kung fu under the guidance of Ugly Maid in the mountains. All she has on her mind in these years is to avenge her mother’s death. Nevertheless, after she bids farewell to her master and leaves the mountains, she unexpectedly falls in love with her enemy’s son. As they both conceal their true identities and misunderstanding keeps accumulating, how will this romance end?",
+   "tmdb_director": "Chou Hsu-Chiang",
+   "tmdb_genres": [
+    "Action",
+    "Adventure"
+   ]
   },
   {
    "title": "Waterloo",
@@ -7853,13 +7856,16 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 17129,
+   "poster": "/2WJSNY14pA1ZlfcJD2auVqQ7Y5h.jpg",
+   "backdrop": "/zkvjPIvyfrMXS09gJyboXjua54e.jpg",
+   "runtime": 84,
+   "overview": "Hanzo extracts a confession from a ghost using his assaulting methods, foils thieves, connects with Heisuke Takei a friend from his youth, offers protection to a forward-thinking physician Genan Sugino who has defamed his ruler, discovers a pleasure ring of young wives and a blind music teacher, and cuckolds a corrupt official under his very nose.",
+   "tmdb_director": "Yoshio Inoue",
+   "tmdb_genres": [
+    "Action",
+    "Drama"
+   ]
   },
   {
    "title": "Phantom of the Paradise",
@@ -8863,13 +8869,17 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 188076,
+   "poster": "/d7ivFMJCpfBPl1BKgarXkmtsUUQ.jpg",
+   "backdrop": "/cNdlNE3NOSbxRI6NJNMHh7OZTfl.jpg",
+   "runtime": 71,
+   "overview": "Trevor is an extremely shy undertaker's assistant. He always tags along with his good friend Ronnie, when he goes to the pub with his girlfriend Sandra. Sandra introduces Trevor to her more forward friend Linda. Linda has a difficult time getting Trevor to go out with her, but she finally gets him to go to a disco; he won't dance, so Linda dances with Ronnie.",
+   "tmdb_director": "Mike Leigh",
+   "tmdb_genres": [
+    "Drama",
+    "Romance",
+    "TV Movie"
+   ]
   },
   {
    "title": "The Late Show",
@@ -13695,13 +13705,19 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 26936,
+   "poster": "/cyOqtWxEtMPThNYdydH0W7sYlVp.jpg",
+   "backdrop": "/ewCZBw1MlYg1Juk01IIo7vEra3C.jpg",
+   "runtime": 96,
+   "overview": "Masaki, a baseball player and gas-station attendant, gets into trouble with the local Yakuza and goes to Okinawa to get a gun to defend himself. There he meets Uehara, a tough gangster, who is in serious debt to the yakuza and planning revenge.",
+   "tmdb_director": "Takeshi Kitano",
+   "tmdb_genres": [
+    "Crime",
+    "Comedy",
+    "Drama",
+    "Action",
+    "Thriller"
+   ]
   },
   {
    "title": "Carlito's Way",
@@ -14520,13 +14536,17 @@
    "column": "L",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 408,
+   "poster": "/3VAHfuNb6Z7UiW12iYKANSPBl8m.jpg",
+   "backdrop": "/4yWayBvwl9gHXaWrDrAslxjL7mh.jpg",
+   "runtime": 83,
+   "overview": "A beautiful girl, Snow White, takes refuge in the forest in the house of seven dwarfs to hide from her stepmother, the wicked Queen. The Queen is jealous because she wants to be known as \"the fairest in the land,\" and Snow White's beauty surpasses her own.",
+   "tmdb_director": "David Hand & Ben Sharpsteen & William Cottrell & Larry Morey & Perce Pearce & Wilfred Jackson",
+   "tmdb_genres": [
+    "Fantasy",
+    "Animation",
+    "Family"
+   ]
   },
   {
    "title": "The Flower of My Secret",
@@ -18205,13 +18225,18 @@
    "column": "R",
    "notes": "",
    "pin": "",
-   "tmdb_id": null,
-   "poster": null,
-   "backdrop": null,
-   "runtime": null,
-   "overview": null,
-   "tmdb_director": null,
-   "tmdb_genres": null
+   "tmdb_id": 109099,
+   "poster": "/o9DoB4Rsuc8wdkSZCJWB6fq9QPP.jpg",
+   "backdrop": "/sL5D4VGH63JoTSgABiQZgsQvQ1V.jpg",
+   "runtime": 101,
+   "overview": "The rivalry between the manipulative boss of an advertising agency and her talented protégée escalates from stealing credit to public humiliation to murder.",
+   "tmdb_director": "Brian De Palma",
+   "tmdb_genres": [
+    "Thriller",
+    "Drama",
+    "Crime",
+    "Mystery"
+   ]
   },
   {
    "title": "The Act of Killing",
