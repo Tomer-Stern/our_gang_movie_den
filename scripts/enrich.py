@@ -94,25 +94,42 @@ def key_of(rec: dict) -> str:
     return f"{slug}|{rec.get('year', '')}"
 
 
-def surnames(credit: str) -> set[str]:
-    """
-    The family names in a credit string, accent-folded.
+# Words that trail a family name rather than being one.
+NAME_SUFFIXES = {"brothers", "bros", "sisters", "jnr", "jr", "snr", "sr", "iii"}
 
-    Comparing every token instead would call "David Hand" a match for
-    "David Fincher" on the strength of the first name alone — which is how a
-    Snow White short nearly ended up standing in for Se7en. Splitting on the
-    separators and taking the last word of each name keeps "Powell &
-    Pressburger" matching "Michael Powell & Emeric Pressburger" while letting
-    the Davids apart.
+
+def _fold(s: str) -> str:
+    s = unicodedata.normalize("NFD", s or "")
+    return "".join(c for c in s if not unicodedata.combining(c)).lower()
+
+
+def name_parts(credit: str) -> tuple[set[str], set[str]]:
     """
-    s = unicodedata.normalize("NFD", credit or "")
-    s = "".join(c for c in s if not unicodedata.combining(c)).lower()
-    out = set()
-    for part in re.split(r"[&,]|\band\b", s):
+    (family names, all name words) for a credit string, accent-folded.
+
+    Family names alone are too strict — "Coen Brothers" reduces to *Brothers*,
+    and romanised names put the wrong word last ("Sammo Kam-Bo Hung"). Any
+    shared word alone is too loose — it calls "David Hand" a match for "David
+    Fincher", which is how a Snow White short nearly stood in for Se7en. So we
+    keep both and let same_person() weigh them.
+    """
+    folded = _fold(credit)
+    families, every = set(), set()
+    for part in re.split(r"[&,]|\band\b", folded):
         words = [w for w in re.split(r"[^a-z]+", part) if len(w) > 2]
+        every.update(words)
+        while words and words[-1] in NAME_SUFFIXES:
+            words.pop()
         if words:
-            out.add(words[-1])
-    return out
+            families.add(words[-1])
+    return families, every
+
+
+def same_person(a: str, b: str) -> bool:
+    """A shared family name, or two words in common — one shared word is not enough."""
+    fam_a, all_a = name_parts(a)
+    fam_b, all_b = name_parts(b)
+    return bool(fam_a & fam_b) or len(all_a & all_b) >= 2
 
 
 def api(path: str, key: str, **params) -> dict:
@@ -183,7 +200,7 @@ def resolve(m: dict, key: str) -> dict | None:
     if not pool:
         return None
 
-    want = surnames(m.get("director", ""))
+    want = m.get("director", "")
     if want:
         # A title search alone can miss the film entirely — TMDb lists Fincher's
         # "Seven" as "Se7en" — so fold in the year-free results too.
@@ -196,9 +213,9 @@ def resolve(m: dict, key: str) -> dict | None:
         time.sleep(SLEEP)
         if first is None:
             first = got
-        if not want:
+        if not want.strip():
             return got
-        if want & surnames(got.get("tmdb_director") or ""):
+        if same_person(want, got.get("tmdb_director") or ""):
             return got
     return first
 
