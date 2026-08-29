@@ -94,11 +94,25 @@ def key_of(rec: dict) -> str:
     return f"{slug}|{rec.get('year', '')}"
 
 
-def name_tokens(s: str) -> set[str]:
-    """Surname-ish tokens, accent-folded, for comparing two credit strings."""
-    s = unicodedata.normalize("NFD", s or "")
+def surnames(credit: str) -> set[str]:
+    """
+    The family names in a credit string, accent-folded.
+
+    Comparing every token instead would call "David Hand" a match for
+    "David Fincher" on the strength of the first name alone — which is how a
+    Snow White short nearly ended up standing in for Se7en. Splitting on the
+    separators and taking the last word of each name keeps "Powell &
+    Pressburger" matching "Michael Powell & Emeric Pressburger" while letting
+    the Davids apart.
+    """
+    s = unicodedata.normalize("NFD", credit or "")
     s = "".join(c for c in s if not unicodedata.combining(c)).lower()
-    return {t for t in re.split(r"[^a-z]+", s) if len(t) > 2}
+    out = set()
+    for part in re.split(r"[&,]|\band\b", s):
+        words = [w for w in re.split(r"[^a-z]+", part) if len(w) > 2]
+        if words:
+            out.add(words[-1])
+    return out
 
 
 def api(path: str, key: str, **params) -> dict:
@@ -169,7 +183,7 @@ def resolve(m: dict, key: str) -> dict | None:
     if not pool:
         return None
 
-    want = name_tokens(m.get("director", ""))
+    want = surnames(m.get("director", ""))
     if want:
         # A title search alone can miss the film entirely — TMDb lists Fincher's
         # "Seven" as "Se7en" — so fold in the year-free results too.
@@ -184,7 +198,7 @@ def resolve(m: dict, key: str) -> dict | None:
             first = got
         if not want:
             return got
-        if want & name_tokens(got.get("tmdb_director") or ""):
+        if want & surnames(got.get("tmdb_director") or ""):
             return got
     return first
 
